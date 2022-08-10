@@ -22,7 +22,7 @@ const Navbar = () => {
         }}
         underline="none"
       >
-        <Button color="inherit">Главная</Button>
+        <Button color="inherit" href="/" >Главная</Button>
         <Button
           aria-controls="basic-menu" //меню
           aria-haspopup="true" //открывает меню

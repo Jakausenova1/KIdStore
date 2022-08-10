@@ -3,6 +3,7 @@ import Header from "./components/Header";
 import AppBarr from "./components/AppBar";
 import Carousel from "./components/Carousel";
 import Cards from "./components/Cards";
+import Footer from "./components/Footer";
 
 function App() {
   return (
@@ -11,6 +12,7 @@ function App() {
       <AppBarr />
       <Carousel />
       <Cards />
+      <Footer />
     </>
   );
 }
