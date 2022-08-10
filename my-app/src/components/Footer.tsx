@@ -1,17 +1,17 @@
 import React from "react";
-import { Container, Box, Grid, Link } from "@mui/material";
+import { Box, Grid, Link } from "@mui/material";
 import InstagramIcon from "@mui/icons-material/Instagram";
 import FacebookIcon from "@mui/icons-material/Facebook";
 
 const Footer = () => {
   return (
     <Box
+      px={{ xs: 3, sm: 7 }}
+      py={{ xs: 5, sm: 7 }}
       sx={{
         bgcolor: "text.secondary",
         color: "white",
-        padding: "10px",
-        width: "100%",
-        marginLeft: "-10px"
+        marginTop:"20px"
       }}
     >
       <Grid container spacing={5}>
