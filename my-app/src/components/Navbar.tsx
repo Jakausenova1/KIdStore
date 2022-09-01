@@ -1,5 +1,15 @@
 import React from "react";
-import { Box, Button, Link, Menu, MenuItem } from "@mui/material";
+import {
+  Button,
+  Link,
+  Menu,
+  MenuItem,
+  Grid,
+  TextField,
+  Theme,
+} from "@mui/material";
+import LoginForm from "./LoginForm";
+import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 
 const Navbar = () => {
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
@@ -11,9 +21,17 @@ const Navbar = () => {
   const handleClose = () => {
     setAnchorEl(null);
   };
-
   return (
-    <Box>
+    <Grid sx={NavbarAdapter}>
+      <Grid item xs={2} sm={4}>
+        <TextField
+          fullWidth
+          id="input-with-sx"
+          label="Поиск..."
+          variant="standard"
+        />
+      </Grid>
+
       <Link
         href="#"
         sx={{
@@ -22,11 +40,13 @@ const Navbar = () => {
         }}
         underline="none"
       >
-        <Button color="inherit" href="/" >Главная</Button>
+        <Button color="inherit" href="/">
+          Главная
+        </Button>
         <Button
-          aria-controls="basic-menu" //меню
-          aria-haspopup="true" //открывает меню
-          aria-expanded={openMenu ? "true" : undefined} //закрывает меню
+          aria-controls="basic-menu"
+          aria-haspopup="true"
+          aria-expanded={openMenu ? "true" : undefined}
           onClick={handleClick}
           color="inherit"
           sx={{
@@ -68,8 +88,24 @@ const Navbar = () => {
           Контакты
         </Button>
       </Link>
-    </Box>
+      <Grid item xs={2} sm={4}>
+        <LoginForm />
+      </Grid>
+      <Grid item xs={2} sm={4}>
+        <ShoppingCartIcon />
+      </Grid>
+    </Grid>
   );
 };
 
 export default Navbar;
+
+const NavbarAdapter = (theme: Theme) => ({
+  [theme.breakpoints.down("md")]: {
+    display: "none",
+  },
+  [theme.breakpoints.up("md")]: {
+    display: "flex",
+    justifyContent: "space-between",
+  },
+});

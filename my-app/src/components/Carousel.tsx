@@ -1,10 +1,11 @@
 import * as React from "react";
 import { useTheme } from "@mui/material/styles";
-import { Box, MobileStepper, Paper, Button } from "@mui/material";
+import { Box, MobileStepper, Paper, Button, Theme } from "@mui/material";
 import SwipeableViews from "react-swipeable-views";
 import { autoPlay } from "react-swipeable-views-utils";
 import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
 import ChevronRightIcon from "@mui/icons-material/ChevronRight";
+import { makeStyles } from "@mui/styles";
 
 const AutoPlaySwipeableViews = autoPlay(SwipeableViews);
 
@@ -38,8 +39,10 @@ function Carousel() {
     setActiveStep(step);
   };
 
+  const classes = useStyles();
+
   return (
-    <Box sx={{ maxWidth: 1000, flexGrow: 1, marginLeft: 10, marginTop: 5 }}>
+    <Box sx={CarouselAdapter}>
       <Paper
         square
         elevation={5}
@@ -109,3 +112,25 @@ function Carousel() {
 }
 
 export default Carousel;
+
+const useStyles = makeStyles({
+  boxx: {
+    height: 550,
+    display: "block",
+    maxWidth: 1000,
+    overflow: "hidden",
+    width: "100%",
+  },
+});
+
+const CarouselAdapter = (theme: Theme) => ({
+  [theme.breakpoints.down("md")]: {
+    display: "none",
+  },
+  [theme.breakpoints.up("md")]: {
+    maxWidth: 1000,
+    flexGrow: 1,
+    marginLeft: 10,
+    marginTop: 5,
+  },
+});
