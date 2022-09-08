@@ -4,31 +4,28 @@ import {
   Dialog,
   DialogTitle,
   DialogContent,
-  TextField,
   DialogActions,
   Input,
 } from "@mui/material";
 import React from "react";
-import { useState } from "react";
+// const useInput = ({initialValue}: any) => {
+//   const [value, setValue] = useState(initialValue);
+//   const [isDirty, setDirty] = useState(false);
 
-const useInput = (initialValue: any) => {
-  const [value, setValue] = useState(initialValue);
-  const [isDirty, setDirty] = useState(false);
+// const onChange = (e: any) => {
+//   setValue(e.target.value);
+// };
 
-  const onChange = (e: any) => {
-    setValue(e.target.value);
-  };
+// const onBlur = (e: any) => {
+//   setDirty(true);
+// };
 
-  const onBlur = (e: any) => {
-    setDirty(true);
-  };
-
-  return {
-    value,
-    onChange,
-    onBlur,
-  };
-};
+//   return {
+//     value,
+//     onChange,
+//     onBlur,
+//   };
+// };
 
 const LoginForm = () => {
   const [open, setOpen] = React.useState(false);
@@ -41,8 +38,8 @@ const LoginForm = () => {
     setOpen(false);
   };
 
-  const email = useInput("");
-  const password = useInput("");
+  // const email = useInput("");
+  // const password = useInput("");
 
   // const [emailDirty, setEmailDirty] = useState(false);
   // const [passwordDirty, setPasswordDirty] = useState(false);
@@ -81,17 +78,17 @@ const LoginForm = () => {
         <DialogTitle>Вход</DialogTitle>
         <DialogContent>
           <input
-            onChange={(e) => email.onChange(e)}
-            onBlur={(e) => email.onBlur(e)}
-            value={email.value}
+            // onChange={(e) => email.onChange(e)}
+            // onBlur={(e) => email.onBlur(e)}
+            // value={email.value}
             name="email"
             type="text"
             placeholder="Введите свой E-mail"
           />
           <input
-            onChange={(e) => password.onChange(e)}
-            onBlur={(e) => password.onBlur(e)}
-            value={password.value}
+            // onChange={(e) => password.onChange(e)}
+            // onBlur={(e) => password.onBlur(e)}
+            // value={password.value}
             name="password"
             type="text"
             placeholder="Введите свой пароль"

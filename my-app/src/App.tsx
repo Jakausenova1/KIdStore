@@ -1,13 +1,19 @@
-import React from "react";
-import Header from "./components/Header";
-import Navbar from "./components/Navbar";
-import Carousel from "./components/Carousel";
-import Cards from "./components/Cards";
-import Footer from "./components/Footer";
-import { Grid, Container, Theme } from "@mui/material";
+import React, { useState, useEffect } from "react";
+import {
+  Header,
+  Navbar,
+  Cards,
+  Carousel,
+  Footer,
+  Products,
+} from "./components/index";
+import { Grid, Container, Box } from "@mui/material";
 import MenuIconAd from "./components/MenuIconAd";
+import { IUser } from "./components/Types";
+import { Routes, Route } from "react-router-dom";
+import { Cardss } from "./components/Cardss";
 
-const cardsData = {
+export const cardsData = {
   first: {
     title: "Игрушки для развития",
     text: "Развивающие игры, плюшевые игрушки, конструкторы...",
@@ -26,38 +32,36 @@ const cardsData = {
 };
 
 function App() {
+  const [users, setUsers] = useState<IUser[]>([]);
+
+  useEffect(() => {
+    fetch("https://jsonplaceholder.typicode.com/users")
+      .then((response) => response.json())
+      .then((data) => console.log(data));
+  }, []);
+
   return (
     <>
       <Container>
         <Header />
         <MenuIconAd />
         <Navbar />
-        <Carousel />
-        <Grid container spacing={2}>
-          <Grid item xs={12} sm={6} md={4}>
-            <Cards
-              title={cardsData.first.title}
-              text={cardsData.first.text}
-              img={cardsData.first.img}
-            />
-          </Grid>
-          <Grid item xs={12} sm={6} md={4}>
-            <Cards
-              title={cardsData.second.title}
-              text={cardsData.second.text}
-              img={cardsData.second.img}
-            />
-          </Grid>
-          <Grid item xs={12} sm={6} md={4}>
-            <Cards
-              title={cardsData.third.title}
-              text={cardsData.third.text}
-              img={cardsData.third.img}
-            />
-          </Grid>
-        </Grid>
+        <Routes>
+          <Route
+            path="/main/"
+            element={
+              <>
+                <Carousel />
+                <Cardss />
+              </>
+            }
+          />
+        </Routes>
+        <Routes>
+          <Route path="/products/" element={<Products />} />
+        </Routes>
+        <Footer />
       </Container>
-      <Footer />
     </>
   );
 }

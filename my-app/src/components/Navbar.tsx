@@ -10,6 +10,7 @@ import {
 } from "@mui/material";
 import LoginForm from "./LoginForm";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
+import { NavLink } from "react-router-dom";
 
 const Navbar = () => {
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
@@ -40,9 +41,11 @@ const Navbar = () => {
         }}
         underline="none"
       >
-        <Button color="inherit" href="/">
-          Главная
-        </Button>
+        <NavLink to="/main">
+          <Button color="inherit" href="/">
+            Главная
+          </Button>
+        </NavLink>
         <Button
           aria-controls="basic-menu"
           aria-haspopup="true"
@@ -64,7 +67,10 @@ const Navbar = () => {
             "aria-labelledby": "basic-button",
           }}
         >
-          <MenuItem onClick={handleClose}>Одежда</MenuItem>
+          <NavLink to="/products">
+            {" "}
+            <MenuItem onClick={handleClose}>Одежда</MenuItem>
+          </NavLink>
           <MenuItem>Для новорожденных</MenuItem>
           <MenuItem>Обувь</MenuItem>
           <MenuItem>Спорт</MenuItem>

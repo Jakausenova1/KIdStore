@@ -1,0 +1,5 @@
+[
+  { "id": 1, "name": "Брюки", "price": 10, "imgUrl": "" },
+  { "id": 2, "name": "Куртка", "price": 12, "imgUrl": "http://" },
+  { "id": 3, "name": "Футболка", "price": 14, "imgUrl": "https://ae01.alicdn.com/kf/HTB1YObwtyQnBKNjSZFmq6AApVXak/Kids-Character-Printed-Boys-Girls-T-Shirt-Cotton-Dinosaur-T-shirt-For-Kids-O-neck-Toddler.jpg"}
+]
