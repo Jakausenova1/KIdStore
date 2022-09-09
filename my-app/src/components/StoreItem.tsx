@@ -1,4 +1,12 @@
-import { Card, CardContent, CardMedia, Typography, Grid } from "@mui/material";
+import {
+  Card,
+  CardContent,
+  CardMedia,
+  Typography,
+  Grid,
+  Button,
+} from "@mui/material";
+import { Box } from "@mui/system";
 interface StoreItemProps {
   id: number;
   name: string;
@@ -7,6 +15,7 @@ interface StoreItemProps {
 }
 
 export function StoreItem({ id, name, price, imgUrl }: StoreItemProps) {
+  const quantity = 0;
   return (
     <Grid item xs={12} sm={6} md={4} xl={3}>
       <Card sx={{ marginLeft: 7 }}>
@@ -16,8 +25,22 @@ export function StoreItem({ id, name, price, imgUrl }: StoreItemProps) {
             {name}
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            {price}
+            {price} $
           </Typography>
+          <div>
+            {quantity === 0 ? (
+              <Button>+Добавить в корзину</Button>
+            ) : (
+              <>
+                <Button size="small">+</Button>
+                <div>В корзине {quantity}</div>
+                <Button size="small">-</Button>
+              </>
+            )}
+          </div>
+          <Button variant="outlined" color="error" size="small">
+            Удалить
+          </Button>
         </CardContent>
       </Card>
     </Grid>
