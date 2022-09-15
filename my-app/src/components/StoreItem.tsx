@@ -7,6 +7,7 @@ import {
   Button,
 } from "@mui/material";
 import { Box } from "@mui/system";
+import { useShoppingCart } from "./ShoppingCartContent";
 interface StoreItemProps {
   id: number;
   name: string;
@@ -15,7 +16,13 @@ interface StoreItemProps {
 }
 
 export function StoreItem({ id, name, price, imgUrl }: StoreItemProps) {
-  const quantity = 0;
+  const {
+    getItemQuantity,
+    increaseCartQuantity,
+    decreaseCartQuantity,
+    removeFromCart,
+  } = useShoppingCart();
+  const quantity = getItemQuantity(id);
   return (
     <Grid item xs={12} sm={6} md={4} xl={3}>
       <Card sx={{ marginLeft: 7 }}>
@@ -29,16 +36,22 @@ export function StoreItem({ id, name, price, imgUrl }: StoreItemProps) {
           </Typography>
           <div>
             {quantity === 0 ? (
-              <Button>+Добавить в корзину</Button>
+              <Button onClick={() => increaseCartQuantity(id)}>
+                +Добавить в корзину
+              </Button>
             ) : (
               <>
-                <Button size="small">+</Button>
+                <Button onClick={() => decreaseCartQuantity(id)} size="small">
+                  -
+                </Button>
                 <div>В корзине {quantity}</div>
-                <Button size="small">-</Button>
+                <Button onClick={() => increaseCartQuantity(id)} size="small">
+                  +
+                </Button>
               </>
             )}
           </div>
-          <Button variant="outlined" color="error" size="small">
+          <Button onClick={() => removeFromCart(id)} variant="outlined" color="error" size="small">
             Удалить
           </Button>
         </CardContent>
