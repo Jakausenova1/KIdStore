@@ -13,7 +13,7 @@ const images = [
   {
     id: "1",
     imgPath:
-      "https://xn--80affzoz8byc.xn--p1ai/wp-content/uploads/2019/03/search-home-hero.jpg",
+      "https://mdk.ru.net/image/banners/NY.jpg",
   },
   {
     id: "2",

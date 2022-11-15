@@ -5,10 +5,14 @@ type ShoppingCartProviderProps = {
 };
 
 type ShoppingCartContent = {
+  // openCart: ()=>  void;
+  // closeCart: ()=>  void;
   getItemQuantity: (id: number) => number;
   increaseCartQuantity: (id: number) => void;
   decreaseCartQuantity: (id: number) => void;
   removeFromCart: (id: number) => void;
+  // cartQuantity:number;
+  // cartItem :  CartItem[];
 };
 
 type CartItem = {
@@ -62,7 +66,7 @@ export function ShoppingCartProvider({ children }: ShoppingCartProviderProps) {
 
   function removeFromCart(id: number) {
     setCartItems((currItems) => {
-      return currItems.filter((item) => item.id !== id);
+      return currItems.filter(item => item.id !== id);
     });
 
     return (

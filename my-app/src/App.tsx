@@ -1,17 +1,17 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import {
   Header,
   Navbar,
-  Cards,
+  Cardss,
   Carousel,
   Footer,
-  Products,
+  Products, Timer,
 } from "./components/index";
-import { Grid, Container, Box } from "@mui/material";
+import {Container} from "@mui/material";
 import MenuIconAd from "./components/MenuIconAd";
 import { IUser } from "./components/Types";
 import { Routes, Route } from "react-router-dom";
-import { Cardss } from "./components/Cardss";
+
 
 export const cardsData = {
   first: {
@@ -34,11 +34,11 @@ export const cardsData = {
 function App() {
   const [users, setUsers] = useState<IUser[]>([]);
 
-  useEffect(() => {
-    fetch("https://jsonplaceholder.typicode.com/users")
-      .then((response) => response.json())
-      .then((data) => console.log(data));
-  }, []);
+  // useEffect(() => {
+  //   fetch("https://jsonplaceholder.typicode.com/users")
+  //     .then((response) => response.json())
+  //     .then((data) => console.log(data));
+  // }, []);
 
   return (
     <>
@@ -52,8 +52,8 @@ function App() {
             element={
               <>
                 <Carousel />
+                <Timer />
                 <Cardss />
-                
               </>
             }
           />
